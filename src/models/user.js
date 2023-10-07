@@ -42,22 +42,41 @@ const userschema = new mongoose.Schema({
       }
     },
   },
-  tokens:[{
-    token:{
-      type :String ,
-      required:true
-    }
-  }]
+  tokens: [
+    {
+      token: {
+        type: String,
+        required: true,
+      },
+    },
+  ],
 });
-userschema.method("generateAuthToken", async (id) => {
-  // const user = this;
-  // console.log(user);
-  console.log(id);
-  console.log("inside generateAuthtoken fn");
-  const token = jwt.sign({ _id: id }, "mynewCourse");
-  // console.log(token);
+
+userschema.methods.toJSON = function () {
+  const user = this;
+  console.log(user);
+  const userProfile = user.toObject();
+  delete userProfile.password;
+  delete userProfile.tokens;
+  return userProfile;
+};
+
+userschema.methods.generateAuthToken = function () {
+  const user = this;
+  console.log(user._id);
+  const token = jwt.sign({ _id: user._id.toString() }, "mynewCourse");
+  console.log(token);
   return token;
-});
+};
+// userschema.method("generateAuthToken", async (id) => {
+//   // const user = this;
+//   // console.log(user);
+//   console.log(id);
+//   console.log("inside generateAuthtoken fn");
+//   const token = jwt.sign({ _id: id }, "mynewCourse");
+//   // console.log(token);
+//   return token;
+// });
 // userschema.methods.generateAuthToken=()=>{
 //   return this;
 //   const user=this;
