@@ -2,6 +2,8 @@ const express = require("express");
 const UserRouter = require("./routers/users");
 const jwt = require("jsonwebtoken");
 const TaskRouter = require("./routers/tasks");
+const Task=require("../src/models/task")
+const User=require("../src/models/user")
 require("./db/mongoose");
 
 const app = express();
@@ -18,7 +20,6 @@ const port = process.env.PORT || 3000;
 app.use(express.json()); //to convert json into object
 app.use("/users", UserRouter);
 app.use("/tasks", TaskRouter);
-const bcrypt = require("bcryptjs");
 
 // const myFunc = async () => {
 //   const password = "ram@123";
@@ -43,3 +44,10 @@ const bcrypt = require("bcryptjs");
 app.listen(port, () => {
   console.log(`Server is running on ${port}`);
 });
+
+// main=async()=>{
+//    const user=await User.findById("65222e49c7e756916731ae42");
+//    await user.populate('tasks');
+//    console.log(user.tasks);
+// }
+// main();
