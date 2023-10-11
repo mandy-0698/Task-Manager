@@ -8,7 +8,7 @@ require("./db/mongoose");
 
 const app = express();
 const port = process.env.PORT || 3000;
-
+// const multer=require("multer");
 // app.use((req, res, next) => {
 //   console.log(req.method, req.path);
 //   next();
@@ -20,6 +20,14 @@ const port = process.env.PORT || 3000;
 app.use(express.json()); //to convert json into object
 app.use("/users", UserRouter);
 app.use("/tasks", TaskRouter);
+
+// const upload=multer({
+//   dest:'images'
+// });
+
+// app.post('/upload',upload.single('upload'),(req,res)=>{
+//   res.send();
+// })
 
 // const myFunc = async () => {
 //   const password = "ram@123";
