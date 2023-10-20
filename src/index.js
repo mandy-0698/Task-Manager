@@ -21,32 +21,32 @@ app.use(express.json()); //to convert json into object
 app.use("/users", UserRouter);
 app.use("/tasks", TaskRouter);
 
-const upload = multer({
-  dest: "images",
-  limits: {
-    fileSize: 1000000,
-  },
-  fileFilter(req, file, cb) {
-    if (!file.originalname.match(/\.(doc|docx)$/)) {
-      //regular expression it is searching for files with extension doc or docx
-      return cb(new Error("Only word files are allowed!"));
-    }
-    cb(undefined, true);
-  },
-});
-// const errorMiddleware = (req, res, next) => {
-//   throw new Error("error from my middleware!");
-// };
-app.post(
-  "/upload",
-  upload.single('upload'),
-  (req, res) => {
-    res.send();
-  },
-  (error, req, res, next) => {
-    res.status(400).send({ error: error.message });
-  }
-);
+// const upload = multer({
+//   dest: "images",
+//   limits: {
+//     fileSize: 1000000,
+//   },
+//   fileFilter(req, file, cb) {
+//     if (!file.originalname.match(/\.(doc|docx)$/)) {
+//       //regular expression it is searching for files with extension doc or docx
+//       return cb(new Error("Only word files are allowed!"));
+//     }
+//     cb(undefined, true);
+//   },
+// });
+// // const errorMiddleware = (req, res, next) => {
+// //   throw new Error("error from my middleware!");
+// // };
+// app.post(
+//   "/upload",
+//   upload.single('upload'),
+//   (req, res) => {
+//     res.send();
+//   },
+//   (error, req, res, next) => {
+//     res.status(400).send({ error: error.message });
+//   }
+// );
 
 // const myFunc = async () => {
 //   const password = "ram@123";
@@ -67,14 +67,19 @@ app.post(
 //   console.log(ans);
 // };
 
-// myFunc();
+// // myFunc();
 app.listen(port, () => {
   console.log(`Server is running on ${port}`);
 });
 
-// main=async()=>{
-//    const user=await User.findById("65222e49c7e756916731ae42");
-//    await user.populate('tasks');
-//    console.log(user.tasks);
-// }
-// main();
+// // main=async()=>{
+// //    const user=await User.findById("65222e49c7e756916731ae42");
+// //    await user.populate('tasks');
+// //    console.log(user.tasks);
+// // }
+// // main();
+/**
+ *
+ * This call sends an email to one recipient.
+ *
+ */
