@@ -66,7 +66,7 @@ userschema.virtual("tasks", {
 
 userschema.methods.toJSON = function () {
   const user = this;
-  console.log(user);
+  // console.log(user);
   const userProfile = user.toObject();
   delete userProfile.password;
   delete userProfile.tokens;
@@ -76,9 +76,7 @@ userschema.methods.toJSON = function () {
 
 userschema.methods.generateAuthToken = function () {
   const user = this;
-  console.log(user._id);
   const token = jwt.sign({ _id: user._id.toString() }, "mynewCourse");
-  console.log(token);
   return token;
 };
 // userschema.method("generateAuthToken", async (id) => {

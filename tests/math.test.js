@@ -37,7 +37,6 @@ test("Should add two numbers", (done) => {
     done();
   });
 });
-
 test("Should add two numbers async/await", async () => {
   const sum = await add(2, 20);
   expect(sum).toEqual(22);
