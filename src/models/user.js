@@ -121,11 +121,11 @@ userschema.pre("save", async function (next) {
   next();
 });
 userschema.pre("deleteOne", async function (next) {
-  console.log("deleting tasks");
+  //console.log("deleting tasks");
   // console.log(this);
   // const user = this;
   const id = this.getQuery()["_id"];
-  console.log(id);
+  //console.log(id);
   await Task.deleteMany({ owner: id });
   next();
 });

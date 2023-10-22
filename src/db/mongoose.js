@@ -2,10 +2,7 @@ const mongoose = require("mongoose");
 
 //mongoose.connect("mongodb://127.0.0.1:27017/task-manager-db"); //for connecting to database ...format =>url/name of db
 
-mongoose.connect("mongodb://127.0.0.1:27017/task-manager-test");
-
-
-
+mongoose.connect("mongodb://127.0.0.1:27017/task-manager-test"); //for test database
 
 // const task = new Task({});
 
